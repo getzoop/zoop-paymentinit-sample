@@ -32,10 +32,7 @@ fun String.isValidCpfOrCnpj(): Boolean {
 }
 
 fun Long.formatAmount(): String {
-    val decimal =  BigDecimal(this).run {
-        setScale(2, BigDecimal.ROUND_FLOOR)
-            .divide(BigDecimal(100), BigDecimal.ROUND_FLOOR)
-    }
+    val decimal =  this/100F
     val locale = Locale("pt", "BR")
     val formatter = NumberFormat.getCurrencyInstance(locale)
     return formatter.format(decimal)

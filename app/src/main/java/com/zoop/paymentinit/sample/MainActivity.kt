@@ -21,14 +21,17 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.zoop.paymentinit.sample.ui.theme.AppTheme
+import com.zoop.sdk.plugin.paymentinit.model.PaymentInitFailResponse
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,6 +58,7 @@ fun MainApp(activity: ComponentActivity) {
     var errorMessage: String? by remember { mutableStateOf(null) }
     var referenceId: String? by remember { mutableStateOf(null) }
     var hadSuccess: Boolean? by remember { mutableStateOf(null) }
+    var failReason: PaymentInitFailResponse.FailReason? by remember { mutableStateOf(null) }
 
     var amount: Long by remember { mutableStateOf(0) }
     var cpfOrCnpj: String by remember { mutableStateOf(BuildConfig.CPF_OR_CNPJ) }
@@ -65,6 +69,7 @@ fun MainApp(activity: ComponentActivity) {
     ) {
         Column(
             verticalArrangement = Arrangement.spacedBy(20.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
                 text = "PaymentInit Sample",
@@ -103,6 +108,7 @@ fun MainApp(activity: ComponentActivity) {
                         onFail = {
                             hadSuccess = false
                             errorMessage = it.errorMessage
+                            failReason = it.reason
                         }
                     )
                 }
@@ -113,14 +119,27 @@ fun MainApp(activity: ComponentActivity) {
             when(hadSuccess) {
                 true -> Text(
                     text = "Pagamento Aprovado! $referenceId",
-//                    color = colorResource(id = R.color.green),
+                    color = colorResource(id = R.color.successTextColor),
                     style = MaterialTheme.typography.bodyLarge
                 )
-                false -> Text(
-                    text = errorMessage ?: "ERRO GENERICO",
-//                    color = colorResource(id = R.color.design_default_color_error),
-                    style = MaterialTheme.typography.bodyLarge
-                )
+                false -> {
+                    Text(
+                        text = when(failReason) {
+                            PaymentInitFailResponse.FailReason.PAYMENT_CANCELED -> "Pagamento Cancelado"
+                            PaymentInitFailResponse.FailReason.PAYMENT_DENIED -> "Pagamento Negado"
+                            PaymentInitFailResponse.FailReason.PAYMENT_PENDING -> "Pagamento Pendente"
+                            PaymentInitFailResponse.FailReason.ABORTED -> "Operação abortada"
+                            else -> "Falha no Pagamento"
+                        },
+                        color = colorResource(id = R.color.errorTextColor),
+                        style = MaterialTheme.typography.bodyLarge
+                    )
+                    Text(
+                        text = errorMessage ?: "ERRO GENERICO",
+                        color = colorResource(id = R.color.errorTextColor),
+                        style = MaterialTheme.typography.bodyLarge
+                    )
+                }
                 else -> {}
             }
         }

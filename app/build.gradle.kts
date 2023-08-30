@@ -29,7 +29,8 @@ android {
         buildConfigField ("String", "SELLER", localProperties["SELLER"].toString())
         buildConfigField ("String", "ACCESS_KEY", localProperties["ACCESS_KEY"].toString())
 
-        manifestPlaceholders["MARKETPLACE"] = localProperties["production.MARKETPLACE"].toString().replace("\"", "")
+        manifestPlaceholders["MARKETPLACE"] = localProperties["MARKETPLACE"].toString().replace("\"", "")
+        manifestPlaceholders["SELLER"] = localProperties["SELLER"].toString().replace("\"", "")
     }
 
     buildTypes {

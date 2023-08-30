@@ -37,5 +37,5 @@ zoop-android-sample está licenciada sob os termos da licença [MIT License](LIC
 
 ## Links
 
-* [Documentação](https://https://getzoop.github.io/zoop-sdk-plugin-paymentinit/)
+* [Documentação](https://getzoop.github.io/zoop-sdk-plugin-paymentinit/)
 * [Suporte](suporte@zoop.com.br)

@@ -24,13 +24,11 @@ android {
             useSupportLibrary = true
         }
 
-        buildConfigField ("String", "CPF_OR_CNPJ", localProperties["CPF_OR_CNPJ"].toString())
-        buildConfigField ("String", "MARKETPLACE", localProperties["MARKETPLACE"].toString())
-        buildConfigField ("String", "SELLER", localProperties["SELLER"].toString())
+        buildConfigField ("String", "MARKETPLACE_ID", localProperties["MARKETPLACE_ID"].toString())
+        buildConfigField ("String", "SELLER_ID", localProperties["SELLER_ID"].toString())
         buildConfigField ("String", "ACCESS_KEY", localProperties["ACCESS_KEY"].toString())
 
-        manifestPlaceholders["MARKETPLACE"] = localProperties["MARKETPLACE"].toString().replace("\"", "")
-        manifestPlaceholders["SELLER"] = localProperties["SELLER"].toString().replace("\"", "")
+        manifestPlaceholders["MARKETPLACE_ID"] = localProperties["MARKETPLACE_ID"].toString().replace("\"", "")
     }
 
     buildTypes {

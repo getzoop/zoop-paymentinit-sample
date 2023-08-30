@@ -61,7 +61,7 @@ fun MainApp(activity: ComponentActivity) {
     var failReason: PaymentInitFailResponse.FailReason? by remember { mutableStateOf(null) }
 
     var amount: Long by remember { mutableStateOf(0) }
-    var cpfOrCnpj: String by remember { mutableStateOf(BuildConfig.CPF_OR_CNPJ) }
+    var cpfOrCnpj: String by remember { mutableStateOf("") }
 
     Surface(
         color = MaterialTheme.colorScheme.background,

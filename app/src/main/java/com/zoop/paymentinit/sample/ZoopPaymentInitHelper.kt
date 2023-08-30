@@ -13,8 +13,8 @@ object ZoopPaymentInitHelper {
     fun init(context: Context) {
         val result = Zoop.initialize(context) {
             credentials {
-                marketplace = BuildConfig.MARKETPLACE
-                seller = BuildConfig.SELLER
+                marketplace = BuildConfig.MARKETPLACE_ID
+                seller = BuildConfig.SELLER_ID
                 terminal = "paymentinit-sample-1"
                 accessKey = BuildConfig.ACCESS_KEY
             }

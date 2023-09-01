@@ -13,7 +13,7 @@ android {
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.zoop.paymentinit.sample"
+        applicationId = "com.zoop.paymentinit.app"
         minSdk = 24
         targetSdk = 33
         versionCode = 1
@@ -31,6 +31,16 @@ android {
         manifestPlaceholders["MARKETPLACE_ID"] = localProperties["MARKETPLACE_ID"].toString().replace("\"", "")
     }
 
+    signingConfigs {
+        create("config") {
+            keyAlias = "developer"
+            keyPassword = "developer"
+            storeFile = rootProject.file("developer.keystore")
+            storePassword = "developer"
+        }
+    }
+
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -38,6 +48,11 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs["config"]
+        }
+
+        debug {
+            signingConfig = signingConfigs["config"]
         }
     }
     compileOptions {
@@ -81,7 +96,7 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
     // Zoop SDK
-    implementation("com.zoop.sdk.plugin:paymentinit-debug:2.2.0-rc-1-SNAPSHOT")
+    implementation("com.zoop.sdk.plugin:paymentinit-debug:2.2.2-rc-1")
 
     // Zoop SDK - Dependencies
     implementation("com.google.android.material:material:1.5.0")

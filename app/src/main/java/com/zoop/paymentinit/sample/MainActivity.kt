@@ -184,7 +184,7 @@ fun AmountTextField(
             onValueChange(value.text.filter { it.isDigit() }.toLongOrNull() ?: 0)
         },
         label = {
-            Text("Valor (em centavos)")
+            Text("Valor")
         },
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
     )

@@ -46,10 +46,7 @@ object ZoopPaymentInitHelper {
             amount = amount,
             personalId = personalId,
             onSuccess = onSuccess,
-            onFail = {
-                println(it.reason)
-                onFail(it)
-            }
+            onFail = onFail
         ).apply(Zoop::post)
     }
 

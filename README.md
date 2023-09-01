@@ -23,7 +23,7 @@ Caso tenha dúvidas em relação a essas credenciais entrar em contato com o sup
 
 ## Credenciais para download da SDK
 
-A sdk é baixada atravéz de um repositório maven referenciado no `build.gradle.kts` raiz do projeto.
+A sdk é baixada através de um repositório maven referenciado no `build.gradle.kts` raiz do projeto.
 
 As variáveis de ambiente `GITHUB_USER`,`GITHUB_PAT` devem ser configuradas de acordo com as instruções do repositório maven de pacotes públicos da Zoop:
 https://github.com/getzoop/zoop-package-public

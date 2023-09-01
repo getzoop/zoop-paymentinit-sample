@@ -31,30 +31,16 @@ android {
         manifestPlaceholders["MARKETPLACE_ID"] = localProperties["MARKETPLACE_ID"].toString().replace("\"", "")
     }
 
-    signingConfigs {
-        create("config") {
-            keyAlias = "developer"
-            keyPassword = "developer"
-            storeFile = rootProject.file("developer.keystore")
-            storePassword = "developer"
-        }
-    }
-
-
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            signingConfig = signingConfigs["config"]
-        }
-
-        debug {
-            signingConfig = signingConfigs["config"]
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17

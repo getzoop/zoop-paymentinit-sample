@@ -13,7 +13,6 @@ android {
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.zoop.paymentinit.sample"
         minSdk = 24
         targetSdk = 33
         versionCode = 1
@@ -33,13 +32,14 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -81,7 +81,7 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
     // Zoop SDK
-    implementation("com.zoop.sdk.plugin:paymentinit-debug:2.2.0-rc-1-SNAPSHOT")
+    implementation("com.zoop.sdk.plugin:paymentinit-debug:2.2.2-rc-1")
 
     // Zoop SDK - Dependencies
     implementation("com.google.android.material:material:1.5.0")

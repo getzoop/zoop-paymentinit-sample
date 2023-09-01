@@ -26,13 +26,14 @@ object ZoopPaymentInitHelper {
 
         Zoop.make<PaymentInitPlugin>().apply {
             configureTheme {
-//                playbook.primaryColor = R.color.
-//                playbook.textPrimaryColor = R.color.
-//                playbook.accentColor = R.color.green
+                playbook.brandImage = R.mipmap.ic_launcher_round
+                playbook.primaryColor = R.color.primary
+                playbook.textPrimaryColor = R.color.text_primary
+                playbook.accentColor = R.color.accent
             }
         }.run(Zoop::plug)
     }
-//
+
     fun pay(
         activity: ComponentActivity,
         amount: Long,

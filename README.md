@@ -5,7 +5,6 @@ Você pode fazer forks do projeto ou simplesmente criar seu próprio repositóri
 
 Caso note algum problema com seu funcionamento, entre em contato com nosso suporte através do e-mail: suporte@zoop.com.br.
 
-
 ## Configuração do sample
 
 Adicione as credenciais `MARKETPLACE_ID`,`SELLER_ID`, `API_KEY` no `local.properties` do projeto com os devidos valores.
@@ -21,6 +20,14 @@ API_KEY="9876543210"
 ```
 
 Caso tenha dúvidas em relação a essas credenciais entrar em contato com o suporte. 
+
+## Credenciais para download da SDK
+
+A sdk é baixada através de um repositório maven referenciado no `build.gradle.kts` raiz do projeto.
+
+As variáveis de ambiente `GITHUB_USER`,`GITHUB_PAT` devem ser configuradas de acordo com as instruções do repositório maven de pacotes públicos da Zoop:
+https://github.com/getzoop/zoop-package-public
+
 
 ## Configuração do AppLink
 
